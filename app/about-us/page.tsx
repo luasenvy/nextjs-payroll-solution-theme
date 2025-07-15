@@ -2,6 +2,7 @@ import { SiGithub, SiX } from "@icons-pack/react-simple-icons";
 import { Brain, Code, Puzzle, ShieldCheck } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { createElement } from "react";
 import { AnimatePage } from "@/components/AnimatePage";
 import teamImage from "@/public/assets/team-photo.webp";
@@ -264,15 +265,15 @@ export default async function AboutUsPage() {
               people to join us.
             </p>
             <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-              <a href="/careers" className="btn bg-white text-payflo-purple hover:bg-opacity-90">
+              <Link href="/careers" className="btn bg-white text-payflo-purple hover:bg-opacity-90">
                 View Open Positions
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/contact"
                 className="btn border-2 border-white bg-transparent hover:bg-white/10"
               >
                 Get in Touch
-              </a>
+              </Link>
             </div>
           </div>
         </div>

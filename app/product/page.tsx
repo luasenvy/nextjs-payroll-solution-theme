@@ -1,6 +1,7 @@
 import { Brush, ChartLine, Code, CreditCard, PanelsTopLeft, SquareCheck } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { createElement } from "react";
 import { AnimatePage } from "@/components/AnimatePage";
 import { CTASection } from "@/components/CTASection";
@@ -66,12 +67,12 @@ export default async function ProductPage() {
                 infrastructure and features customers will love.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <a href="/book-demo" className="btn btn-primary">
+                <Link href="/book-demo" className="btn btn-primary">
                   Book a Demo
-                </a>
-                <a href="/documentation" className="btn btn-secondary">
+                </Link>
+                <Link href="/documentation" className="btn btn-secondary">
                   View API Docs
-                </a>
+                </Link>
               </div>
             </div>
 

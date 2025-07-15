@@ -1,3 +1,4 @@
+import Link from "next/link";
 import GridPattern from "@/public/grid-pattern.svg";
 
 const steps = [
@@ -78,7 +79,7 @@ export function HowItWorks() {
 
         <div className="mt-16 text-center">
           <div className="animate-on-scroll delay-5">
-            <a href="/documentation" className="btn btn-primary group">
+            <Link href="/documentation" className="btn btn-primary group">
               <span className="inline-flex items-center">
                 View API Documentation
                 <svg
@@ -96,7 +97,7 @@ export function HowItWorks() {
                   />
                 </svg>
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

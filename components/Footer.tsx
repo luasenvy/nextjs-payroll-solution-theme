@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import logoSrc from "@/public/assets/logo.svg";
 
 const companyLinks = [
@@ -44,7 +45,7 @@ export function Footer() {
       <div className="container-custom relative">
         <div className="grid grid-cols-1 gap-8 border-gray-800 border-b pb-12 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <a
+            <Link
               href="/"
               className="inline-block transition-transform duration-300 hover:scale-105"
               aria-label="Payflo home"
@@ -56,14 +57,14 @@ export function Footer() {
                 height={40}
                 className="brightness-0 invert"
               />
-            </a>
+            </Link>
             <p className="mt-4 max-w-md text-gray-400">
               Payflo makes it fast and easy for SaaS platforms to build and embed payroll using our
               infrastructure, APIs and UI components.
             </p>
             <div className="mt-6 flex space-x-4">
               {socialLinks.map((social, index) => (
-                <a
+                <Link
                   key={`social-${index}`}
                   href={social.href}
                   target="_blank"
@@ -105,7 +106,7 @@ export function Footer() {
                       />
                     </svg>
                   )}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -120,7 +121,7 @@ export function Footer() {
                   key={`company-link-${index}`}
                   className="transform transition-all duration-300 hover:translate-x-1"
                 >
-                  <a
+                  <Link
                     href={link.href}
                     className="inline-block text-gray-400 transition-colors duration-300 hover:text-white"
                     style={{
@@ -128,7 +129,7 @@ export function Footer() {
                     }}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -144,7 +145,7 @@ export function Footer() {
                   key={`resource-link-${index}`}
                   className="transform transition-all duration-300 hover:translate-x-1"
                 >
-                  <a
+                  <Link
                     href={link.href}
                     className="inline-block text-gray-400 transition-colors duration-300 hover:text-white"
                     target={link.href.startsWith("http") ? "_blank" : undefined}
@@ -152,7 +153,7 @@ export function Footer() {
                     style={{ transitionDelay: `${index * 50}ms` }}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -168,7 +169,7 @@ export function Footer() {
                   key={`legal-link-${index}`}
                   className="transform transition-all duration-300 hover:translate-x-1"
                 >
-                  <a
+                  <Link
                     href={link.href}
                     className="inline-block text-gray-400 transition-colors duration-300 hover:text-white"
                     style={{
@@ -176,7 +177,7 @@ export function Footer() {
                     }}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

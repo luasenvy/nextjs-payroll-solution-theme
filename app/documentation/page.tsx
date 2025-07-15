@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { AnimatePage } from "@/components/AnimatePage";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default async function DocumentationPage() {
           </div>
 
           <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-            <a href="/documentation/api-reference" className="group">
+            <Link href="/documentation/api-reference" className="group">
               <div className="rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md">
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-payflo-blue/10">
                   <svg
@@ -43,9 +44,9 @@ export default async function DocumentationPage() {
                   Detailed documentation of our REST API endpoints and parameters.
                 </p>
               </div>
-            </a>
+            </Link>
 
-            <a href="/tutorials" className="group">
+            <Link href="/tutorials" className="group">
               <div className="rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md">
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-payflo-purple/10">
                   <svg
@@ -69,9 +70,9 @@ export default async function DocumentationPage() {
                   Step-by-step guides to help you get started with our platform.
                 </p>
               </div>
-            </a>
+            </Link>
 
-            <a href="/case-studies" className="group">
+            <Link href="/case-studies" className="group">
               <div className="rounded-lg border border-gray-100 bg-white p-6 shadow-sm transition-shadow duration-200 hover:shadow-md">
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-payflo-purple/10">
                   <svg
@@ -95,7 +96,7 @@ export default async function DocumentationPage() {
                   Real-world examples of successful Payflo implementations.
                 </p>
               </div>
-            </a>
+            </Link>
           </div>
 
           <div className="mb-16">

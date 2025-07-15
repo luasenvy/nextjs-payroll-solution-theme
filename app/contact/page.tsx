@@ -123,8 +123,9 @@ export default async function ContactPage() {
                     name="subject"
                     className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-payflo-purple focus:ring-2 focus:ring-payflo-purple"
                     required
+                    defaultValue=""
                   >
-                    <option value="" disabled selected>
+                    <option value="" disabled>
                       Select an option
                     </option>
                     <option value="Sales Inquiry">Sales Inquiry</option>

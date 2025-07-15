@@ -1,5 +1,6 @@
 import { CircleCheck, CircleX } from "lucide-react";
 import { Metadata } from "next";
+import Link from "next/link";
 import { AnimatePage } from "@/components/AnimatePage";
 import { CTASection } from "@/components/CTASection";
 
@@ -107,9 +108,9 @@ export default async function PricingPage() {
                   ))}
                 </ul>
                 <div className="mt-8">
-                  <a href={tier.cta.href} className="btn btn-primary w-full text-center">
+                  <Link href={tier.cta.href} className="btn btn-primary w-full text-center">
                     {tier.cta.text}
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -219,9 +220,9 @@ export default async function PricingPage() {
               Have questions about our pricing? Check out our FAQ or contact us for more details.
             </p>
             <div className="mt-8">
-              <a href="/contact" className="btn btn-secondary">
+              <Link href="/contact" className="btn btn-secondary">
                 Get in Touch
-              </a>
+              </Link>
             </div>
           </div>
         </div>

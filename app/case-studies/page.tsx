@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePage } from "@/components/AnimatePage";
 import BlogPayrollImage from "@/public/blog/future-payroll.webp";
 import PartnerLogoImage1 from "@/public/partner-logo-1.svg";
@@ -180,9 +181,9 @@ export default async function CaseStudiesPage() {
                       $200,000 annual cost savings
                     </li>
                   </ul>
-                  <a href="/case-studies/techcorp" className="btn btn-primary">
+                  <Link href="/case-studies/techcorp" className="btn btn-primary">
                     Read the full story →
-                  </a>
+                  </Link>
                 </div>
                 <div className="relative h-64 md:h-auto">
                   <Image
@@ -202,7 +203,10 @@ export default async function CaseStudiesPage() {
               Success <span className="gradient-text">Stories</span>
             </h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              <a href="/case-studies/startup-success" className="group animate-on-scroll delay-1">
+              <Link
+                href="/case-studies/startup-success"
+                className="group animate-on-scroll delay-1"
+              >
                 <div className="feature-card">
                   <Image src={PartnerLogoImage2} alt="StartupCo Logo" className="mb-4 size-12" />
                   <h3 className="mb-2 font-semibold text-xl transition-colors duration-200 group-hover:text-payflo-purple">
@@ -224,7 +228,7 @@ export default async function CaseStudiesPage() {
                     </svg>
                   </div>
                 </div>
-              </a>
+              </Link>
 
               <a
                 href="/case-studies/enterprise-evolution"
@@ -257,7 +261,10 @@ export default async function CaseStudiesPage() {
                 </div>
               </a>
 
-              <a href="/case-studies/retail-revolution" className="group animate-on-scroll delay-3">
+              <Link
+                href="/case-studies/retail-revolution"
+                className="group animate-on-scroll delay-3"
+              >
                 <div className="feature-card">
                   <Image src={PartnerLogoImage4} alt="RetailPro Logo" className="mb-4 size-12" />
                   <h3 className="mb-2 font-semibold text-xl transition-colors duration-200 group-hover:text-payflo-purple">
@@ -279,7 +286,7 @@ export default async function CaseStudiesPage() {
                     </svg>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         </section>

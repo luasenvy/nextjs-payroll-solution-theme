@@ -71,7 +71,12 @@ export default async function CookiePolicyPage() {
               Most web browsers allow you to control cookies through their settings preferences.
               However, if you limit the ability of websites to set cookies, you may worsen your
               overall user experience. To learn more about cookies and how to manage them, visit{" "}
-              <a href="https://www.aboutcookies.org" className="text-blue-600 hover:underline">
+              <a
+                href="https://www.aboutcookies.org"
+                className="text-blue-600 hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 aboutcookies.org
               </a>
               .

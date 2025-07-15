@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePage } from "@/components/AnimatePage";
 import teamPhoto from "@/public/assets/team-photo.webp";
 
@@ -344,9 +345,9 @@ export default async function CaseStudiesPage() {
                       </span>
                     </div>
                   </div>
-                  <a href="/careers/product-designer" className="btn btn-primary mt-6 md:mt-0">
+                  <Link href="/careers/product-designer" className="btn btn-primary mt-6 md:mt-0">
                     Learn more →
-                  </a>
+                  </Link>
                 </div>
               </div>
 

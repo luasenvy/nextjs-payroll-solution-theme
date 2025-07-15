@@ -1,7 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import HeroImage from "@/public/assets/hero-dashboard.webp";
 import GridPattern from "@/public/grid-pattern.svg";
-
 import Avatar1 from "@/public/testimonial-avatar-1.webp";
 import Avatar2 from "@/public/testimonial-avatar-2.webp";
 import Avatar3 from "@/public/testimonial-avatar-3.webp";
@@ -29,12 +29,12 @@ export function Hero() {
               infrastructure, APIs and UI components.
             </p>
             <div className="mt-8 flex animate-on-scroll flex-col gap-4 delay-2 sm:flex-row">
-              <a href="/book-demo" className="btn btn-primary">
+              <Link href="/book-demo" className="btn btn-primary">
                 Book a Demo
-              </a>
-              <a href="/documentation" className="btn btn-secondary">
+              </Link>
+              <Link href="/documentation" className="btn btn-secondary">
                 Read Documentation
-              </a>
+              </Link>
             </div>
             <div className="mt-8 flex animate-on-scroll items-center space-x-4 delay-3">
               <div className="-space-x-2 flex" role="img" aria-label="Customer testimonial avatars">

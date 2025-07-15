@@ -1,6 +1,7 @@
 import { SiGithub, SiGoogle } from "@icons-pack/react-simple-icons";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatePage } from "@/components/AnimatePage";
 import logoImage from "@/public/assets/logo-square.svg";
 
@@ -15,9 +16,9 @@ export default async function LoginPage() {
       <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-payflo-gray/50 to-white px-4 py-12 sm:px-6 lg:px-8">
         <div className="w-full max-w-md">
           <div className="mb-8 flex justify-center">
-            <a href="/" className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center space-x-2">
               <Image src={logoImage} alt="Payflo" className="h-8 w-auto" />
-            </a>
+            </Link>
           </div>
 
           <div className="rounded-xl border border-gray-100 bg-white p-8 shadow-lg">
