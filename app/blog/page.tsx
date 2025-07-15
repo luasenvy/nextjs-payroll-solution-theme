@@ -2,6 +2,7 @@ import "./blog.css";
 
 import { ArrowRight, Calendar1, Clock3, FileSearch } from "lucide-react";
 import { Metadata } from "next";
+import Link from "next/link";
 import { BlogApp } from "@/app/blog/BlogApp";
 import { AnimatePage } from "@/components/AnimatePage";
 import { posts } from "@/lib/posts";
@@ -78,12 +79,12 @@ export default async function BlogPage() {
                 </div>
 
                 <h3 className="mb-4 font-bold text-3xl leading-tight md:text-4xl">
-                  <a
+                  <Link
                     href={`/blog/${featuredPost.slug}`}
                     className="rounded-smtransition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-4"
                   >
                     {featuredPost.title}
-                  </a>
+                  </Link>
                 </h3>
 
                 <p className="mb-6 text-gray-600 text-lg leading-relaxed">{featuredPost.excerpt}</p>
@@ -112,7 +113,7 @@ export default async function BlogPage() {
                   </div>
                 </div>
 
-                <a
+                <Link
                   href={`/blog/${featuredPost.slug}`}
                   className="btn btn-primary group inline-flex items-center focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
                   aria-label={`Read full article: ${featuredPost.title}`}
@@ -122,7 +123,7 @@ export default async function BlogPage() {
                     className="ml-2 size-4 transition-transform duration-200 group-hover:translate-x-1 group-focus:translate-x-1"
                     aria-hidden="true"
                   />
-                </a>
+                </Link>
               </div>
             </article>
           </div>
@@ -173,7 +174,7 @@ export default async function BlogPage() {
                 className={`blog-post-card group animate-on-scroll delay-${Math.min(index + 1, 5)}`}
                 data-tags={post.tags.map((tag) => tag.toLowerCase()).join(",")}
               >
-                <a
+                <Link
                   href={`/blog/${post.slug}`}
                   className="hover:-translate-y-1 focus:-translate-y-1 block overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
                 >
@@ -226,7 +227,7 @@ export default async function BlogPage() {
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               </article>
             ))}
           </div>

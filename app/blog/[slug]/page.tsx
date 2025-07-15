@@ -1,6 +1,7 @@
 import "./post.css";
 
 import { ArrowLeft, Calendar1, Clock3 } from "lucide-react";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ShareArticle } from "@/app/blog/[slug]/ShareArticle";
 import { ShareArticle2 } from "@/app/blog/[slug]/ShareArticle2";
@@ -184,7 +185,7 @@ export default async function PostRead({ params }: PostReadProps) {
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2" role="list">
                   {relatedPosts.map((post: Post, i) => (
                     <article key={`listitem-${i}`} role="listitem">
-                      <a
+                      <Link
                         href={`/blog/${slug}`}
                         className="group hover:-translate-y-1 focus:-translate-y-1 block overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
                       >
@@ -214,7 +215,7 @@ export default async function PostRead({ params }: PostReadProps) {
                             {date}
                           </time>
                         </div>
-                      </a>
+                      </Link>
                     </article>
                   ))}
                 </div>
