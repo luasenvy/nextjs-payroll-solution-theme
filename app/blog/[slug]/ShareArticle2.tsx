@@ -25,13 +25,13 @@ export function ShareArticle2({ title }: ShareArticleProps) {
           href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(shareUrl)}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded p-1 text-gray-600 transition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
+          className="rounded-smp-1 text-gray-600 transition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
           aria-label="Share on Twitter"
         >
           <SiX className="size-6" aria-hidden="true" />
         </a>
         <button
-          className="rounded p-1 text-gray-600 transition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
+          className="rounded-smp-1 text-gray-600 transition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
           id="copy-link-mobile"
           aria-label="Copy link to article"
         >

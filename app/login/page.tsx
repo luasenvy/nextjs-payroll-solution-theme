@@ -68,7 +68,7 @@ export default async function LoginPage() {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-payflo-purple focus:ring-payflo-purple/20"
+                    className="h-4 w-4 rounded-smborder-gray-300 text-payflo-purple focus:ring-payflo-purple/20"
                   />
                   <label htmlFor="remember-me" className="ml-2 block text-gray-700 text-sm">
                     Remember me

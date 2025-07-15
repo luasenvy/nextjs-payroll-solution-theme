@@ -19,7 +19,7 @@ export function Header() {
       <div className="container-custom flex h-20 items-center justify-between">
         <Link
           href="/"
-          className="flex items-center rounded transition-transform duration-300 hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
+          className="flex items-center rounded-smtransition-transform duration-300 hover:scale-105 focus:scale-105 focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
           aria-label="Payflo home"
         >
           <Image
@@ -40,7 +40,7 @@ export function Header() {
             <Link
               key={`nav-item-${index}`}
               href={item.href}
-              className="rounded px-2 py-1 text-gray-700 transition-all duration-300 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
+              className="rounded-smpx-2 py-1 text-gray-700 transition-all duration-300 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
             >
               {item.name}
             </Link>
@@ -50,7 +50,7 @@ export function Header() {
         <div className="flex items-center space-x-4">
           <Link
             href="/login"
-            className="relative hidden rounded px-2 py-1 text-payflo-dark transition-all duration-300 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2 md:inline-block"
+            className="relative hidden rounded-smpx-2 py-1 text-payflo-dark transition-all duration-300 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2 md:inline-block"
           >
             Log In
             <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-payflo-purple transition-all duration-300 group-hover:w-full"></span>
@@ -64,7 +64,7 @@ export function Header() {
 
           <button
             id="menu-toggle"
-            className="flex items-center rounded p-1 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2 md:hidden"
+            className="flex items-center rounded-smp-1 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2 md:hidden"
             aria-label="Toggle navigation menu"
             aria-expanded="false"
             aria-controls="mobile-menu"
@@ -99,7 +99,7 @@ export function Header() {
             <Link
               key={`mobile-nav-item-${index}`}
               href={item.href}
-              className="block rounded px-2 py-2 text-gray-700 transition-all duration-300 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
+              className="block rounded-smpx-2 py-2 text-gray-700 transition-all duration-300 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
               style={{ transitionDelay: `${index * 50}ms` }}
             >
               {item.name}
@@ -107,7 +107,7 @@ export function Header() {
           ))}
           <Link
             href="/login"
-            className="block rounded px-2 py-2 text-gray-700 transition-all duration-300 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
+            className="block rounded-smpx-2 py-2 text-gray-700 transition-all duration-300 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
           >
             Log In
           </Link>

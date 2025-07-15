@@ -25,7 +25,7 @@ export function ShareArticle({ title }: ShareArticleProps) {
           href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(shareUrl)}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center rounded p-1 text-gray-600 transition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
+          className="flex items-center rounded-smp-1 text-gray-600 transition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
           aria-label="Share on Twitter"
         >
           <SiX className="mr-3 size-5" aria-hidden="true" />
@@ -33,7 +33,7 @@ export function ShareArticle({ title }: ShareArticleProps) {
         </a>
         <button
           id="copy-link"
-          className="flex items-center rounded p-1 text-gray-600 transition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
+          className="flex items-center rounded-smp-1 text-gray-600 transition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
           aria-label="Copy link to article"
         >
           <LinkIcon className="mr-3 size-5" aria-hidden="true" />

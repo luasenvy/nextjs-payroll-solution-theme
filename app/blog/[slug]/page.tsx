@@ -159,7 +159,7 @@ export default async function PostRead({ params }: PostReadProps) {
                     <li key={`heading-${i}`}>
                       <a
                         href={`#${heading.id}`}
-                        className="block rounded text-gray-600 text-sm transition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
+                        className="block rounded-smtext-gray-600 text-sm transition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
                       >
                         {heading.title}
                       </a>
@@ -223,7 +223,7 @@ export default async function PostRead({ params }: PostReadProps) {
               <div className="mt-16 border-gray-200 border-t pt-8">
                 <a
                   href="/blog"
-                  className="group flex items-center rounded font-medium text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
+                  className="group flex items-center rounded-smfont-medium text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
                 >
                   <ArrowLeft
                     className="group-hover:-translate-x-1 group-focus:-translate-x-1 mr-2 size-5 transition-transform duration-200"

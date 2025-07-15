@@ -80,7 +80,7 @@ export default async function BlogPage() {
                 <h3 className="mb-4 font-bold text-3xl leading-tight md:text-4xl">
                   <a
                     href={`/blog/${featuredPost.slug}`}
-                    className="rounded transition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-4"
+                    className="rounded-smtransition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-4"
                   >
                     {featuredPost.title}
                   </a>
