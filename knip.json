@@ -1,0 +1,13 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignoreExportsUsedInFile": true,
+  "ignoreDependencies": [
+    "@?commitlint*",
+    "@mdx-js/*",
+    "@next/mdx",
+    "@types/*",
+    "lint-staged",
+    "tailwindcss",
+    "tw-animate-css"
+  ]
+}

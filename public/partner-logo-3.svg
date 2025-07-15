@@ -4,13 +4,13 @@
   
   <!-- Abstract Quantum Symbol -->
   <g transform="translate(50, 30)">
-    <circle cx="0" cy="0" r="15" fill="none" stroke="#7928CA" stroke-width="1.5" />
-    <circle cx="0" cy="0" r="10" fill="none" stroke="#7928CA" stroke-width="1.5" />
+    <circle cx="0" cy="0" r="15" fill="none" stroke="#7928CA" strokeWidth="1.5" />
+    <circle cx="0" cy="0" r="10" fill="none" stroke="#7928CA" strokeWidth="1.5" />
     <circle cx="0" cy="0" r="5" fill="#7928CA" />
     
     <!-- Orbits -->
-    <ellipse cx="0" cy="0" rx="18" ry="8" fill="none" stroke="#7928CA" stroke-width="1" transform="rotate(30)" />
-    <ellipse cx="0" cy="0" rx="18" ry="8" fill="none" stroke="#7928CA" stroke-width="1" transform="rotate(150)" />
+    <ellipse cx="0" cy="0" rx="18" ry="8" fill="none" stroke="#7928CA" strokeWidth="1" transform="rotate(30)" />
+    <ellipse cx="0" cy="0" rx="18" ry="8" fill="none" stroke="#7928CA" strokeWidth="1" transform="rotate(150)" />
   </g>
   
   <!-- Company Text -->
