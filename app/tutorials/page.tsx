@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { AnimatePage } from "@/components/AnimatePage";
 
 export const metadata: Metadata = {
   title: "Tutorials | Payflo",
@@ -6,7 +7,9 @@ export const metadata: Metadata = {
 
 export default function TutorialsPage() {
   return (
-    <main>
+    <>
+      <AnimatePage />
+
       <section className="overflow-hidden pt-20 pb-16 md:pt-28 md:pb-24">
         <div className="container-custom">
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
@@ -384,6 +387,6 @@ export default function TutorialsPage() {
           </a>
         </div>
       </section>
-    </main>
+    </>
   );
 }

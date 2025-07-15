@@ -184,9 +184,12 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 text-center text-gray-400 text-sm">
+        <div className="space-y-1 pt-8 text-center text-gray-400 text-sm">
           <p className="transition-colors duration-300 hover:text-gray-300">
             &copy; {new Date().getFullYear()} Payflo Software Inc. All rights reserved.
+          </p>
+          <p className="text-xs transition-colors duration-300 hover:text-gray-300">
+            Migrate to nextjs by luasenvy
           </p>
         </div>
       </div>

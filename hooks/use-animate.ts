@@ -27,9 +27,7 @@ export const useAnimateReady = () => {
       },
     );
 
-    animatedElements.forEach((element) => {
-      observer.observe(element);
-    });
+    animatedElements.forEach((element) => observer.observe(element));
   }
 
   // ===== Smooth scrolling for anchor links =====
@@ -65,28 +63,25 @@ export const useAnimateReady = () => {
 
   // ===== Button hover/click effects =====
   const buttons = document.querySelectorAll<HTMLButtonElement>(".btn");
-  buttons.forEach((button) => {
-    // Add ripple effect on click
-    button.addEventListener("click", (e: MouseEvent) => {
-      const btn = e.currentTarget as HTMLButtonElement;
-      const rect = btn.getBoundingClientRect();
+  const handleClickButton = (e: MouseEvent) => {
+    const btn = e.currentTarget as HTMLButtonElement;
+    const rect = btn.getBoundingClientRect();
 
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-      const ripple = document.createElement("span");
-      ripple.classList.add("ripple-effect");
-      ripple.style.left = `${x}px`;
-      ripple.style.top = `${y}px`;
+    const ripple = document.createElement("span");
+    ripple.classList.add("ripple-effect");
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
 
-      btn.appendChild(ripple);
+    btn.appendChild(ripple);
 
-      // Remove ripple after animation completes
-      setTimeout(() => {
-        ripple.remove();
-      }, 600);
-    });
-  });
+    // Remove ripple after animation completes
+    setTimeout(() => ripple.remove(), 600);
+  };
+
+  buttons.forEach((button) => button.addEventListener("click", handleClickButton));
 
   // ===== Scroll progress indicator =====
   const progressBar = document.createElement("div");
@@ -106,22 +101,23 @@ export const useAnimateReady = () => {
 
   // ===== Enhanced FAQ accordion animations =====
   const faqItems = document.querySelectorAll<HTMLDetailsElement>(".faq-item details");
-  faqItems.forEach((item) => {
-    item.addEventListener("toggle", () => {
-      const content = item.querySelector<HTMLDivElement>(".faq-content");
-      const summary = item.querySelector<HTMLElement>("summary");
+  const handleToggleFaqItem = (e: Event) => {
+    const item = e.currentTarget as HTMLDetailsElement;
+    const content = item.querySelector<HTMLDivElement>(".faq-content");
+    const summary = item.querySelector<HTMLElement>("summary");
 
-      if (item.open) {
-        // Add open animation classes
-        content?.classList.add("faq-open");
-        summary?.classList.add("faq-summary-open");
-      } else {
-        // Add closing animation classes
-        content?.classList.remove("faq-open");
-        summary?.classList.remove("faq-summary-open");
-      }
-    });
-  });
+    if (item.open) {
+      // Add open animation classes
+      content?.classList.add("faq-open");
+      summary?.classList.add("faq-summary-open");
+    } else {
+      // Add closing animation classes
+      content?.classList.remove("faq-open");
+      summary?.classList.remove("faq-summary-open");
+    }
+  };
+
+  faqItems.forEach((item) => item.addEventListener("toggle", handleToggleFaqItem));
 
   // ===== Enhanced Parallax scrolling effect =====
   const parallaxElements = document.querySelectorAll<HTMLDivElement>(".parallax");
@@ -171,53 +167,55 @@ export const useAnimateReady = () => {
   const menuToggle = document.getElementById("menu-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
 
+  const handleClickMenuToggler = () => {
+    // Toggle the menu with animation
+    const isMenuOpen = !mobileMenu?.classList.contains("hidden");
+
+    if (!isMenuOpen) {
+      // Show menu
+      mobileMenu?.classList.remove("hidden");
+      mobileMenu?.classList.add("mobile-menu-open");
+      menuToggle?.setAttribute("aria-expanded", "true");
+      menuToggle?.classList.add("menu-open");
+
+      // Focus first menu item for keyboard navigation
+      const firstMenuItem = mobileMenu?.querySelector("a");
+      if (firstMenuItem) firstMenuItem.focus();
+    } else {
+      // Hide menu
+      mobileMenu?.classList.add("mobile-menu-closing");
+      menuToggle?.setAttribute("aria-expanded", "false");
+      menuToggle?.classList.remove("menu-open");
+
+      // Wait for animation to finish before hiding
+      setTimeout(() => {
+        mobileMenu?.classList.remove("mobile-menu-open");
+        mobileMenu?.classList.remove("mobile-menu-closing");
+        mobileMenu?.classList.add("hidden");
+      }, 300);
+    }
+  };
+
+  const handleMenuTogglerKeydown = (e: KeyboardEvent) => {
+    if (e.key === "Escape" && !mobileMenu?.classList.contains("hidden")) {
+      mobileMenu?.classList.add("mobile-menu-closing");
+      menuToggle?.setAttribute("aria-expanded", "false");
+      menuToggle?.classList.remove("menu-open");
+      menuToggle?.focus(); // Return focus to toggle button
+
+      setTimeout(() => {
+        mobileMenu?.classList.remove("mobile-menu-open");
+        mobileMenu?.classList.remove("mobile-menu-closing");
+        mobileMenu?.classList.add("hidden");
+      }, 300);
+    }
+  };
+
   if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener("click", () => {
-      // Toggle the menu with animation
-      const isMenuOpen = !mobileMenu.classList.contains("hidden");
-
-      if (!isMenuOpen) {
-        // Show menu
-        mobileMenu.classList.remove("hidden");
-        mobileMenu.classList.add("mobile-menu-open");
-        menuToggle.setAttribute("aria-expanded", "true");
-        menuToggle.classList.add("menu-open");
-
-        // Focus first menu item for keyboard navigation
-        const firstMenuItem = mobileMenu.querySelector("a");
-        if (firstMenuItem) {
-          firstMenuItem.focus();
-        }
-      } else {
-        // Hide menu
-        mobileMenu.classList.add("mobile-menu-closing");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.classList.remove("menu-open");
-
-        // Wait for animation to finish before hiding
-        setTimeout(() => {
-          mobileMenu.classList.remove("mobile-menu-open");
-          mobileMenu.classList.remove("mobile-menu-closing");
-          mobileMenu.classList.add("hidden");
-        }, 300);
-      }
-    });
+    menuToggle.addEventListener("click", handleClickMenuToggler);
 
     // Close menu on Escape key
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
-        mobileMenu.classList.add("mobile-menu-closing");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.classList.remove("menu-open");
-        menuToggle.focus(); // Return focus to toggle button
-
-        setTimeout(() => {
-          mobileMenu.classList.remove("mobile-menu-open");
-          mobileMenu.classList.remove("mobile-menu-closing");
-          mobileMenu.classList.add("hidden");
-        }, 300);
-      }
-    });
+    document.addEventListener("keydown", handleMenuTogglerKeydown);
   }
 
   return () => {
@@ -226,6 +224,12 @@ export const useAnimateReady = () => {
 
     window.removeEventListener("scroll", handleParallax);
     window.removeEventListener("resize", handleParallax);
+
+    document.removeEventListener("keydown", handleMenuTogglerKeydown);
+
+    menuToggle?.removeEventListener("click", handleClickMenuToggler);
+    buttons.forEach((button) => button.removeEventListener("click", handleClickButton));
+    faqItems.forEach((item) => item.removeEventListener("toggle", handleToggleFaqItem));
   };
 };
 

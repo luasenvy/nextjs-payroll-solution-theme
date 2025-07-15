@@ -86,6 +86,7 @@ export default async function PricingPage() {
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             {tiers.map((tier, index) => (
               <div
+                key={`tier-${index}`}
                 className={`relative animate-on-scroll rounded-xl bg-white p-8 shadow-lg transition-shadow duration-300 hover:shadow-xl delay-${index + 2}`}
               >
                 {tier.name === "Scale" && (
@@ -100,8 +101,8 @@ export default async function PricingPage() {
                 </div>
                 <p className="mt-4 text-gray-600">{tier.description}</p>
                 <ul className="mt-8 space-y-4">
-                  {tier.features.map((feature) => (
-                    <li className="flex items-center text-gray-700">
+                  {tier.features.map((feature, index) => (
+                    <li key={`tier-feature-${index}`} className="flex items-center text-gray-700">
                       <CircleCheck className="mr-2 size-5 text-payflo-purple" />
                       {feature}
                     </li>
@@ -124,8 +125,8 @@ export default async function PricingPage() {
                 For large platforms with custom requirements and enterprise-grade needs.
               </p>
               <ul className="mt-8 space-y-4">
-                {enterpriseFeatures.map((feature) => (
-                  <li className="flex items-center">
+                {enterpriseFeatures.map((feature, index) => (
+                  <li key={`enter-feature-${index}`} className="flex items-center">
                     <CircleCheck className="mr-2 size-5 text-white" />
                     {feature}
                   </li>

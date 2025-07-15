@@ -1,8 +1,7 @@
 import "./post.css";
 
 import { ArrowLeft, Calendar1, Clock3 } from "lucide-react";
-import Image from "next/image";
-import { notFound, usePathname } from "next/navigation";
+import { notFound } from "next/navigation";
 import { ShareArticle } from "@/app/blog/[slug]/ShareArticle";
 import { ShareArticle2 } from "@/app/blog/[slug]/ShareArticle2";
 import { AnimatePage } from "@/components/AnimatePage";
@@ -115,7 +114,7 @@ export default async function PostRead({ params }: PostReadProps) {
 
             <div className="mb-12 flex animate-on-scroll flex-wrap items-center gap-6 delay-2">
               <div className="flex items-center">
-                <Image
+                <img
                   src={authorAvatar}
                   alt={`${author}, ${authorRole}`}
                   className="mr-4 h-12 w-12 rounded-full border-2 border-white shadow-md"
@@ -138,7 +137,7 @@ export default async function PostRead({ params }: PostReadProps) {
             </div>
 
             <div className="animate-on-scroll overflow-hidden rounded-2xl shadow-2xl delay-3">
-              <Image src={image} alt={`Featured image for ${title}`} className="h-auto w-full" />
+              <img src={image} alt={`Featured image for ${title}`} className="h-auto w-full" />
             </div>
           </div>
         </div>
@@ -190,7 +189,7 @@ export default async function PostRead({ params }: PostReadProps) {
                         className="group hover:-translate-y-1 focus:-translate-y-1 block overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
                       >
                         <div className="aspect-video overflow-hidden">
-                          <Image
+                          <img
                             src={image}
                             alt={`Featured image for ${title}`}
                             className="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105 group-focus:scale-105"

@@ -11,6 +11,9 @@
 }
 
 @theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
   --color-payflo-purple: var(--payflo-purple);
   --color-payflo-blue: var(--payflo-blue);
   --color-payflo-pink: var(--payflo-pink);
@@ -25,6 +28,8 @@
   --animate-gradient-x: gradientX 3s ease infinite;
   --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-bounce: bounce 1s infinite;
+
+  --font-sans: var(--font-interVariable), sans-serif;
 
   @keyframes fadeInUp {
     from {
