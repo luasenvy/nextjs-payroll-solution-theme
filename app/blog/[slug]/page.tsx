@@ -1,12 +1,11 @@
 import "./post.css";
 
-import { SiX } from "@icons-pack/react-simple-icons";
 import { ArrowLeft, Calendar1, Clock3, Link as LinkIcon, Share } from "lucide-react";
 import { notFound } from "next/navigation";
-import { posts } from "@/app/api/post/route";
 import { ShareArticle } from "@/app/blog/[slug]/ShareArticle";
 import { ShareArticle2 } from "@/app/blog/[slug]/ShareArticle2";
 import { AnimatePage } from "@/components/AnimatePage";
+import { posts } from "@/lib/posts";
 import { Post } from "@/lib/schema/post";
 import { PostApp } from "./PostApp";
 
@@ -38,31 +37,6 @@ function extractHeadings(content: string): Heading[] {
   return headings;
 }
 
-export async function getStaticPaths() {
-  const blogPosts = await getCollection("blog");
-
-  return blogPosts.map((post) => {
-    const relatedPosts = blogPosts
-      .filter((p) => p.id !== post.id)
-      .map((p) => ({
-        slug: p.id,
-        title: p.data.title,
-        excerpt: p.data.excerpt,
-        image: p.data.image,
-        date: p.data.date,
-        tags: p.data.tags,
-      }));
-
-    return {
-      params: { slug: post.id },
-      props: {
-        ...post.data,
-        relatedPosts,
-      },
-    };
-  });
-}
-
 interface PostReadProps {
   params: Promise<{ slug: Post["slug"] }>;
 }
@@ -78,13 +52,14 @@ export async function generateMetadata({ params }: PostReadProps) {
 }
 
 export default async function PostRead({ params }: PostReadProps) {
-  const { slug } = await params;
+  const { slug: _slug } = await params;
 
-  const post = posts.find(({ slug: _slug }) => slug === _slug);
+  const post = posts.find(({ slug }) => slug === _slug);
 
   if (!post) return notFound();
 
-  const { slug: _slug, content, title, tags, author, authorAvatar, authorRole, date } = post;
+  const { slug, excerpt, content, title, tags, author, authorAvatar, authorRole, date, image } =
+    post;
 
   const readingTime = calculateReadingTime(content);
   const headings = extractHeadings(content);
@@ -99,16 +74,7 @@ export default async function PostRead({ params }: PostReadProps) {
         .replace(/[^a-z0-9-]/g, "")}">${heading}</h2>`,
   );
 
-  const relatedPosts = posts
-    .filter(({ slug: _slug }) => slug !== _slug)
-    .map((p) => ({
-      slug: p.id,
-      title: p.data.title,
-      excerpt: p.data.excerpt,
-      image: p.data.image,
-      date: p.data.date,
-      tags: p.data.tags,
-    }));
+  const relatedPosts = posts.filter(({ slug: fslug }) => slug !== fslug);
 
   return (
     <>
@@ -132,8 +98,11 @@ export default async function PostRead({ params }: PostReadProps) {
         <div className="container-custom relative">
           <div className="mx-auto max-w-4xl">
             <div className="mb-8 flex animate-on-scroll flex-wrap gap-2">
-              {tags.map((tag: string) => (
-                <span className="rounded-full bg-payflo-purple/10 px-3 py-1 font-medium text-payflo-purple text-sm">
+              {tags.map((tag: string, i) => (
+                <span
+                  key={`mtag-${i}`}
+                  className="rounded-full bg-payflo-purple/10 px-3 py-1 font-medium text-payflo-purple text-sm"
+                >
                   {tag}
                 </span>
               ))}
@@ -186,8 +155,8 @@ export default async function PostRead({ params }: PostReadProps) {
                   Table of Contents
                 </h2>
                 <ul className="space-y-3" role="list">
-                  {headings.map((heading: Heading) => (
-                    <li>
+                  {headings.map((heading: Heading, i) => (
+                    <li key={`heading-${i}`}>
                       <a
                         href={`#${heading.id}`}
                         className="block rounded text-gray-600 text-sm transition-colors duration-200 hover:text-payflo-purple focus:text-payflo-purple focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
@@ -210,33 +179,36 @@ export default async function PostRead({ params }: PostReadProps) {
               <section className="mt-16 border-gray-200 border-t pt-8">
                 <h2 className="mb-8 font-bold text-2xl">Related Articles</h2>
                 <div className="grid grid-cols-1 gap-8 md:grid-cols-2" role="list">
-                  {relatedPosts.map((post: Post) => (
-                    <article role="listitem">
+                  {relatedPosts.map((post: Post, i) => (
+                    <article key={`listitem-${i}`} role="listitem">
                       <a
-                        href={`/blog/${post.slug}`}
+                        href={`/blog/${slug}`}
                         className="group hover:-translate-y-1 focus:-translate-y-1 block overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
                       >
                         <div className="aspect-video overflow-hidden">
                           <img
-                            src={post.image}
-                            alt={`Featured image for ${post.title}`}
+                            src={image}
+                            alt={`Featured image for ${title}`}
                             className="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105 group-focus:scale-105"
                           />
                         </div>
                         <div className="p-6">
                           <div className="mb-3 flex flex-wrap gap-2">
-                            {post.tags.map((tag: string) => (
-                              <span className="rounded-full bg-payflo-purple/10 px-2 py-1 text-payflo-purple text-xs">
+                            {tags.map((tag: string, i) => (
+                              <span
+                                key={`posttags-${i}`}
+                                className="rounded-full bg-payflo-purple/10 px-2 py-1 text-payflo-purple text-xs"
+                              >
                                 {tag}
                               </span>
                             ))}
                           </div>
                           <h3 className="font-semibold text-lg transition-colors duration-200 group-hover:text-payflo-purple group-focus:text-payflo-purple">
-                            {post.title}
+                            {title}
                           </h3>
-                          <p className="mt-2 line-clamp-2 text-gray-600 text-sm">{post.excerpt}</p>
-                          <time className="mt-4 block text-gray-500 text-sm" dateTime={post.date}>
-                            {post.date}
+                          <p className="mt-2 line-clamp-2 text-gray-600 text-sm">{excerpt}</p>
+                          <time className="mt-4 block text-gray-500 text-sm" dateTime={date}>
+                            {date}
                           </time>
                         </div>
                       </a>

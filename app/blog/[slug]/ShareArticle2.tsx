@@ -13,7 +13,10 @@ export interface ShareArticleProps {
 export function ShareArticle2({ title }: ShareArticleProps) {
   const pathname = usePathname();
 
-  const shareUrl = useMemo(() => new URL(pathname, "localhost:3000").toString(), [pathname]);
+  const shareUrl = useMemo(
+    () => "undefined" !== typeof window && pathname && new URL(pathname, window.origin).toString(),
+    [pathname],
+  );
 
   return (
     <div className="mt-12 border-gray-200 border-t pt-8 lg:hidden">

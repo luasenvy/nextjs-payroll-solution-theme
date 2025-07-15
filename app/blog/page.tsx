@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogApp } from "@/app/blog/BlogApp";
 import { AnimatePage } from "@/components/AnimatePage";
+import { posts } from "@/lib/posts";
 import { Post } from "@/lib/schema/post";
 
 export const metadata: Metadata = {
@@ -21,14 +22,6 @@ function calculateReadingTime(content: string): number {
 }
 
 export default async function BlogPage() {
-  const res = await fetch("http://localhost:3000/api/post");
-
-  if (!res.ok) return notFound();
-
-  const posts = ((await res.json()) as Array<Post>).toSorted(
-    ({ date: a }, { date: b }) => new Date(b).getTime() - new Date(a).getTime(),
-  );
-
   // Get featured post (most recent)
   const featuredPost = posts[0];
   const otherPosts = posts.slice(1);
