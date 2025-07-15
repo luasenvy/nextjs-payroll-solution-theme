@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
+import { Post } from "@/lib/schema/post";
 
-export const posts = [
+export const posts: Array<Post> = [
   {
     title: "Building Payroll for Modern Work",
     slug: "building-payroll-for-modern-work",

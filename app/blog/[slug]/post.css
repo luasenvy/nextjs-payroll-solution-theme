@@ -1,0 +1,60 @@
+/* Add smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
+}
+
+/* Style the table of contents */
+.prose h2 {
+  scroll-margin-top: 2rem;
+}
+
+/* Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Enhance typography */
+.prose {
+  --tw-prose-body: theme('colors.gray.600');
+  --tw-prose-headings: theme('colors.gray.900');
+  --tw-prose-links: theme('colors.payflo-purple');
+  --tw-prose-bold: theme('colors.gray.900');
+  --tw-prose-quotes: theme('colors.gray.900');
+  --tw-prose-code: theme('colors.payflo-purple');
+  --tw-prose-hr: theme('colors.gray.200');
+  --tw-prose-th-borders: theme('colors.gray.200');
+}
+
+.prose :where(h2):not(:where([class~="not-prose"] *)) {
+  margin-top: 2.5em;
+  margin-bottom: 1em;
+  font-size: 1.75em;
+}
+
+.prose :where(p):not(:where([class~="not-prose"] *)) {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  line-height: 1.8;
+}
+
+.prose :where(ul > li):not(:where([class~="not-prose"] *)) {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
