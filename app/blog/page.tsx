@@ -2,6 +2,7 @@ import "./blog.css";
 
 import { ArrowRight, Calendar1, Clock3, FileSearch } from "lucide-react";
 import { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { BlogApp } from "@/app/blog/BlogApp";
 import { AnimatePage } from "@/components/AnimatePage";
@@ -60,7 +61,7 @@ export default async function BlogPage() {
 
             <article className="grid animate-on-scroll grid-cols-1 items-center gap-12 delay-1 lg:grid-cols-2">
               <div className="hover-zoom overflow-hidden rounded-2xl shadow-lg">
-                <img
+                <Image
                   src={featuredPost.image}
                   alt={`Featured image for ${featuredPost.title}`}
                   className="h-auto w-full transition-all duration-500"
@@ -92,7 +93,7 @@ export default async function BlogPage() {
 
                 <div className="mb-8 flex flex-wrap items-center gap-6">
                   <div className="flex items-center">
-                    <img
+                    <Image
                       src={featuredPost.authorAvatar}
                       alt={`${featuredPost.author}, ${featuredPost.authorRole}`}
                       className="mr-3 h-10 w-10 rounded-full border-2 border-white shadow-md"
@@ -180,7 +181,7 @@ export default async function BlogPage() {
                   className="hover:-translate-y-1 focus:-translate-y-1 block overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-300 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-payflo-purple focus:ring-offset-2"
                 >
                   <div className="aspect-video overflow-hidden">
-                    <img
+                    <Image
                       src={post.image}
                       alt={`Featured image for ${post.title}`}
                       className="h-full w-full transform object-cover transition-transform duration-300 group-hover:scale-105 group-focus:scale-105"
@@ -208,7 +209,7 @@ export default async function BlogPage() {
 
                     <div className="flex flex-wrap items-center gap-4 text-gray-500 text-xs">
                       <div className="flex items-center">
-                        <img
+                        <Image
                           src={post.authorAvatar}
                           alt={`${post.author}, ${post.authorRole}`}
                           className="mr-2 h-6 w-6 rounded-full"

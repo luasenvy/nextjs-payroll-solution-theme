@@ -1,10 +1,18 @@
+import Image from "next/image";
+import PartnerLogo1 from "@/public/partner-logo-1.svg";
+import PartnerLogo2 from "@/public/partner-logo-2.svg";
+import PartnerLogo3 from "@/public/partner-logo-3.svg";
+import PartnerLogo4 from "@/public/partner-logo-4.svg";
+import PartnerLogo5 from "@/public/partner-logo-5.svg";
+import PartnerLogo6 from "@/public/partner-logo-6.svg";
+
 const partners = [
-  { name: "Acme Corp", logo: "/partner-logo-1.svg" },
-  { name: "TechFlow", logo: "/partner-logo-2.svg" },
-  { name: "Quantum", logo: "/partner-logo-3.svg" },
-  { name: "Innovate", logo: "/partner-logo-4.svg" },
-  { name: "PlatformX", logo: "/partner-logo-5.svg" },
-  { name: "SyncWave", logo: "/partner-logo-6.svg" },
+  { name: "Acme Corp", logo: PartnerLogo1 },
+  { name: "TechFlow", logo: PartnerLogo2 },
+  { name: "Quantum", logo: PartnerLogo3 },
+  { name: "Innovate", logo: PartnerLogo4 },
+  { name: "PlatformX", logo: PartnerLogo5 },
+  { name: "SyncWave", logo: PartnerLogo6 },
 ];
 
 export function Partners() {
@@ -24,7 +32,7 @@ export function Partners() {
               className={`group animate-on-scroll cursor-pointer delay-${index}`}
             >
               <div className="relative rounded-lg p-4 transition-all duration-300 hover:bg-gray-50">
-                <img
+                <Image
                   src={partner.logo}
                   alt={partner.name}
                   className="mx-auto h-12 w-auto transform opacity-60 grayscale transition-all duration-500 group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
