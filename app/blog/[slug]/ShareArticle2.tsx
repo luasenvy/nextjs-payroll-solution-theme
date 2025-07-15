@@ -4,7 +4,7 @@ import { SiX } from "@icons-pack/react-simple-icons";
 import { Link as LinkIcon } from "lucide-react";
 
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export interface ShareArticleProps {
   title: string;
@@ -12,11 +12,10 @@ export interface ShareArticleProps {
 
 export function ShareArticle2({ title }: ShareArticleProps) {
   const pathname = usePathname();
-
-  const shareUrl = useMemo(
-    () => "undefined" !== typeof window && pathname && new URL(pathname, window.origin).toString(),
-    [pathname],
-  );
+  const [shareUrl, setShareUrl] = useState<string>("");
+  useEffect(() => {
+    setShareUrl(new URL(pathname, window.origin).toString());
+  }, []);
 
   return (
     <div className="mt-12 border-gray-200 border-t pt-8 lg:hidden">

@@ -1,7 +1,7 @@
 import "./post.css";
 
-import { ArrowLeft, Calendar1, Clock3, Link as LinkIcon, Share } from "lucide-react";
-import { notFound } from "next/navigation";
+import { ArrowLeft, Calendar1, Clock3 } from "lucide-react";
+import { notFound, usePathname } from "next/navigation";
 import { ShareArticle } from "@/app/blog/[slug]/ShareArticle";
 import { ShareArticle2 } from "@/app/blog/[slug]/ShareArticle2";
 import { AnimatePage } from "@/components/AnimatePage";
@@ -172,7 +172,10 @@ export default async function PostRead({ params }: PostReadProps) {
             </aside>
 
             <main className="order-1 lg:order-2 lg:col-span-9">
-              <article className="prose prose-lg max-w-none">{processedContent}</article>
+              <article
+                className="prose prose-lg max-w-none"
+                dangerouslySetInnerHTML={{ __html: processedContent }}
+              />
 
               <ShareArticle2 title={title} />
 
