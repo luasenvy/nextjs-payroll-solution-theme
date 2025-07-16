@@ -55,7 +55,7 @@ export function Footer() {
                 alt="Payflo Logo"
                 width={120}
                 height={40}
-                className="brightness-0 invert"
+                className="hue-rotate-180 invert"
               />
             </Link>
             <p className="mt-4 max-w-md text-gray-400">
