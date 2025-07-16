@@ -24,14 +24,14 @@ html {
 
 /* Enhance typography */
 .prose {
-  --tw-prose-body: theme('colors.gray.600');
-  --tw-prose-headings: theme('colors.gray.900');
-  --tw-prose-links: theme('colors.payflo-purple');
-  --tw-prose-bold: theme('colors.gray.900');
-  --tw-prose-quotes: theme('colors.gray.900');
-  --tw-prose-code: theme('colors.payflo-purple');
-  --tw-prose-hr: theme('colors.gray.200');
-  --tw-prose-th-borders: theme('colors.gray.200');
+  --tw-prose-body: theme("colors.gray.600");
+  --tw-prose-headings: theme("colors.gray.900");
+  --tw-prose-links: theme("colors.payflo-purple");
+  --tw-prose-bold: theme("colors.gray.900");
+  --tw-prose-quotes: theme("colors.gray.900");
+  --tw-prose-code: theme("colors.payflo-purple");
+  --tw-prose-hr: theme("colors.gray.200");
+  --tw-prose-th-borders: theme("colors.gray.200");
 }
 
 .prose :where(h2):not(:where([class~="not-prose"] *)) {
