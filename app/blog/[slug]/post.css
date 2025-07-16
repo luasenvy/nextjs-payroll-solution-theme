@@ -1,12 +1,12 @@
 /* Add smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 2rem;
+  scroll-padding-top: calc(85px); /* Adjust based on your header height */
 }
 
 /* Style the table of contents */
 .prose h2 {
-  scroll-margin-top: 2rem;
+  scroll-margin-top: calc(85px); /* Adjust based on your header height */
 }
 
 /* Screen reader only class */
