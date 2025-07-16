@@ -1,11 +1,14 @@
 import "./post.css";
 
+import kebabcase from "lodash.kebabcase";
 import { ArrowLeft, Calendar1, Clock3 } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ShareArticle } from "@/app/blog/[slug]/ShareArticle";
 import { ShareArticle2 } from "@/app/blog/[slug]/ShareArticle2";
 import { AnimatePage } from "@/components/AnimatePage";
+import { getId } from "@/lib/mdx-options";
+import { MDXLoader } from "@/lib/mdx-parser";
 import { posts } from "@/lib/posts";
 import { Post } from "@/lib/schema/post";
 import { PostApp } from "./PostApp";
@@ -21,22 +24,22 @@ function calculateReadingTime(content: string): number {
   return Math.ceil(words / wordsPerMinute);
 }
 
-function extractHeadings(content: string): Heading[] {
-  const headings: Heading[] = [];
-  const regex = /<h2>(.*?)<\/h2>/g;
-  let match: RegExpExecArray | null;
+// function extractHeadings(content: string): Heading[] {
+//   const headings: Heading[] = [];
+//   const regex = /<h2>(.*?)<\/h2>/g;
+//   let match: RegExpExecArray | null;
 
-  while ((match = regex.exec(content)) !== null) {
-    headings.push({
-      title: match[1],
-      id: match[1]
-        .toLowerCase()
-        .replace(/\s+/g, "-")
-        .replace(/[^a-z0-9-]/g, ""),
-    });
-  }
-  return headings;
-}
+//   while ((match = regex.exec(content)) !== null) {
+//     headings.push({
+//       title: match[1],
+//       id: match[1]
+//         .toLowerCase()
+//         .replace(/\s+/g, "-")
+//         .replace(/[^a-z0-9-]/g, ""),
+//     });
+//   }
+//   return headings;
+// }
 
 interface PostReadProps {
   params: Promise<{ slug: Post["slug"] }>;
@@ -63,7 +66,7 @@ export default async function PostRead({ params }: PostReadProps) {
     post;
 
   const readingTime = calculateReadingTime(content);
-  const headings = extractHeadings(content);
+  // const headings = extractHeadings(content);
 
   // Process content to add IDs to h2 tags for table of contents
   const processedContent = content.replace(
@@ -74,6 +77,15 @@ export default async function PostRead({ params }: PostReadProps) {
         .replace(/\s+/g, "-")
         .replace(/[^a-z0-9-]/g, "")}">${heading}</h2>`,
   );
+
+  const heads = (content.replace(/`{3}[^`]+`{3}/g, "").match(/^#[^\n]+/gm) ?? []).map((head) => {
+    const [, , title] = head.split(/(#+) ?/g);
+
+    return {
+      id: getId(title),
+      title: title.trim(),
+    } as Heading;
+  });
 
   const relatedPosts = posts.filter(({ slug: fslug }) => slug !== fslug);
 
@@ -156,7 +168,7 @@ export default async function PostRead({ params }: PostReadProps) {
                   Table of Contents
                 </h2>
                 <ul className="space-y-3" role="list">
-                  {headings.map((heading: Heading, i) => (
+                  {heads.map((heading: Heading, i) => (
                     <li key={`heading-${i}`}>
                       <a
                         href={`#${heading.id}`}
@@ -173,10 +185,9 @@ export default async function PostRead({ params }: PostReadProps) {
             </aside>
 
             <main className="order-1 lg:order-2 lg:col-span-9">
-              <article
-                className="prose prose-lg max-w-none"
-                dangerouslySetInnerHTML={{ __html: processedContent }}
-              />
+              <article className="prose prose-lg max-w-none">
+                <MDXLoader source={processedContent} />
+              </article>
 
               <ShareArticle2 title={title} />
 
